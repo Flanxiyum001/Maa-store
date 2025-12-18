@@ -10,7 +10,7 @@ import attaImage from "@assets/generated_images/organic_whole_wheat_atta.png";
 import gheeImage from "@assets/generated_images/pure_indian_ghee.png";
 import honeyImage from "@assets/generated_images/raw_indian_honey.png";
 import batterImage from "@assets/generated_images/idli_dosa_batter.png";
-import coldPressedOilsCategoryImage from "@assets/generated_images/cold_pressed_oils_category.png";
+import coldPressedOilsCategoryImage from "@assets/generated_images/cold_pressed_oils_category_updated.png";
 import milletsRiceFLakesImage from "@assets/generated_images/millets_category.png";
 import dhalsPulsesCategoryImage from "@assets/generated_images/dhals_pulses_category.png";
 import dryFruitsCategoryImage from "@assets/generated_images/dry_fruits_category.png";
