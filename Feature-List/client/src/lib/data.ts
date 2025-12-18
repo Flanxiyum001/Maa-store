@@ -68,6 +68,13 @@ export const categoryCards: CategoryCard[] = [
     description: "Essential spices and daily items"
   },
   {
+    name: "Masalas",
+    displayName: "Daily Masala",
+    image: "/attached_assets/generated_images/masalas_category.png",
+    itemCount: 12,
+    description: "Premium masalas and spice blends"
+  },
+  {
     name: "Batters",
     displayName: "Batter",
     image: "/attached_assets/generated_images/batters.png",
