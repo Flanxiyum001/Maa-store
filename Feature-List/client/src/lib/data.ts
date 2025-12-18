@@ -14,7 +14,7 @@ import coldPressedOilsCategoryImage from "@assets/generated_images/cold_pressed_
 import milletsRiceFLakesImage from "@assets/generated_images/millets_category.png";
 import dhalsPulsesCategoryImage from "@assets/generated_images/dhals_pulses_category.png";
 import dryFruitsCategoryImage from "@assets/generated_images/dry_fruits_category.png";
-import dailyEssentialsImage from "@assets/generated_images/daily_essentials_category.png";
+import dailyEssentialsImage from "@assets/generated_images/daily_essentials_category_updated.png";
 import masalasCategoryImage from "@assets/generated_images/masalas_category.png";
 import spicesCategoryImage from "@assets/generated_images/spices_category.png";
 import snacksSavoriesCategoryImage from "@assets/generated_images/snacks_savories_category.png";
