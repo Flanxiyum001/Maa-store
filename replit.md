@@ -125,6 +125,7 @@ Feature-List/
 10. ✅ Configured deployment for production autoscale
 11. ✅ Removed email newsletter signup - replaced with WhatsApp-only contact
 12. ✅ Added Privacy Policy page with full content (linked in footer)
+13. ✅ Added Terms and Conditions page (linked in footer)
 
 ## Next Steps (Ready for Launch)
 - Click **Publish** button in Replit to go live

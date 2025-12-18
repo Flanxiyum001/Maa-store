@@ -11,6 +11,7 @@ import ProductDetails from "@/pages/product-details";
 import Checkout from "@/pages/checkout";
 import About from "@/pages/about";
 import PrivacyPolicy from "@/pages/privacy-policy";
+import TermsAndConditions from "@/pages/terms-and-conditions";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/shop" component={Shop} />
       <Route path="/about" component={About} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-and-conditions" component={TermsAndConditions} />
       <Route path="/product/:id" component={ProductDetails} />
       <Route path="/checkout" component={Checkout} />
       <Route component={NotFound} />
