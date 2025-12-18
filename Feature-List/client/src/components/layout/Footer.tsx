@@ -33,19 +33,6 @@ export function Footer() {
             </ul>
           </div>
           
-          <div>
-            <h4 className="font-medium mb-4 text-foreground">Newsletter</h4>
-            <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="flex-1 h-9 rounded-lg border border-input bg-background/50 px-3 py-1 text-sm shadow-sm transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:bg-background hover:border-primary/30"
-              />
-              <button className="h-9 px-4 py-2 bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:shadow-lg inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-300 active:scale-95">
-                Join
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Location Section with Map */}
