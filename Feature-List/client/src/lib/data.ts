@@ -96,6 +96,13 @@ export const categoryCards: CategoryCard[] = [
     description: "Natural health and wellness products"
   },
   {
+    name: "EssentialOils",
+    displayName: "Essential Oils",
+    image: "/attached_assets/generated_images/essential_oils_category.png",
+    itemCount: 14,
+    description: "Pure essential oils for wellness"
+  },
+  {
     name: "Batters",
     displayName: "Batter",
     image: "/attached_assets/generated_images/batters.png",
