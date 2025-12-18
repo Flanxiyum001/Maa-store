@@ -38,9 +38,13 @@ export interface IStorage {
   getOrder(id: string): Promise<Order | undefined>;
   getOrderByNumber(orderNumber: string): Promise<Order | undefined>;
   getAllOrders(filters?: { status?: string }): Promise<Order[]>;
+  getCustomerOrders(userId: string): Promise<Order[]>;
   createOrder(order: InsertOrder): Promise<Order>;
   updateOrder(id: string, updates: Record<string, any>): Promise<Order | undefined>;
   deleteOrder(id: string): Promise<boolean>;
+  
+  // Users - Update
+  updateUser(id: string, updates: Partial<InsertUser>): Promise<User | undefined>;
   
   // Stats
   getDashboardStats(): Promise<{
@@ -81,6 +85,14 @@ export class DatabaseStorage implements IStorage {
 
   async getAllUsers(): Promise<User[]> {
     return db.select().from(users).orderBy(desc(users.createdAt));
+  }
+
+  async updateUser(id: string, updates: Partial<InsertUser>): Promise<User | undefined> {
+    const [updated] = await db.update(users)
+      .set(updates)
+      .where(eq(users.id, id))
+      .returning();
+    return updated;
   }
 
   // Category methods
@@ -175,6 +187,12 @@ export class DatabaseStorage implements IStorage {
         .orderBy(desc(orders.createdAt));
     }
     return db.select().from(orders).orderBy(desc(orders.createdAt));
+  }
+
+  async getCustomerOrders(customerEmail: string): Promise<Order[]> {
+    return db.select().from(orders)
+      .where(eq(orders.customerEmail, customerEmail))
+      .orderBy(desc(orders.createdAt));
   }
 
   async createOrder(order: InsertOrder): Promise<Order> {

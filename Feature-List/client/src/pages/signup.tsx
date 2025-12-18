@@ -50,7 +50,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-amber-50 to-white px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-900/5 via-amber-100/20 to-orange-100 px-4 py-8">
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>Create your account</CardTitle>
