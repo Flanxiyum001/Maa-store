@@ -1,4 +1,4 @@
-import { MapPin, Phone, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 
 export function Footer() {
   return (
@@ -58,10 +58,16 @@ export function Footer() {
                 <p className="text-sm text-muted-foreground mb-3">
                   3-1-138/C, AOC Main Rd, opp. Aoc Gate, Santoshi Nagar Colony, Simhapuri Colony, West Marredpally, Secunderabad, Telangana 500026, India
                 </p>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                   <Phone className="h-4 w-4 text-primary" />
                   <a href="tel:+918340000987" className="hover:text-primary transition-colors duration-300">
                     +91 83400 00987
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                  <MessageCircle className="h-4 w-4 text-primary" />
+                  <a href="https://wa.me/919834000987" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-300">
+                    Chat on WhatsApp
                   </a>
                 </div>
                 <a 
@@ -91,6 +97,9 @@ export function Footer() {
         
         {/* Social Media Links */}
         <div className="flex items-center justify-center gap-6 mb-8 py-8 border-t border-border/40">
+          <a href="https://wa.me/919834000987" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" title="WhatsApp">
+            <MessageCircle className="h-5 w-5" />
+          </a>
           <a href="https://www.youtube.com/@MaaTLStore_" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" title="YouTube">
             <Youtube className="h-5 w-5" />
           </a>
