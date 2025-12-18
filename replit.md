@@ -128,6 +128,7 @@ Feature-List/
 13. ✅ Added Terms and Conditions page (linked in footer)
 14. ✅ Added Return & Refund Policy page (linked in footer)
 15. ✅ Added Shipping Policy page (linked in footer)
+16. ✅ Added Cancellation Policy page (linked in footer)
 
 ## Next Steps (Ready for Launch)
 - Click **Publish** button in Replit to go live
