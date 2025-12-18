@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Heart, Leaf, Users, Droplet, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import storeImage from "@assets/generated_images/maa_store_facility.png";
 
 export default function About() {
   return (
@@ -41,9 +42,11 @@ export default function About() {
                 </div>
               </div>
               <div className="animate-in fade-in slide-in-from-right-8 duration-700 delay-200">
-                <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-border/40 flex items-center justify-center">
-                  <Droplet className="h-24 w-24 text-primary/40" />
-                </div>
+                <img 
+                  src={storeImage} 
+                  alt="Maa Traditional Lifestyle Store Facility" 
+                  className="rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-shadow duration-300 w-full h-auto object-cover"
+                />
               </div>
             </div>
           </div>
