@@ -61,7 +61,7 @@ export const categoryCards: CategoryCard[] = [
     description: "Premium dry fruits"
   },
   {
-    name: "Spices",
+    name: "DailyEssentials",
     displayName: "Daily Essentials",
     image: "/attached_assets/generated_images/daily_essentials_category.png",
     itemCount: 101,
@@ -73,6 +73,13 @@ export const categoryCards: CategoryCard[] = [
     image: "/attached_assets/generated_images/masalas_category.png",
     itemCount: 12,
     description: "Premium masalas and spice blends"
+  },
+  {
+    name: "Spices",
+    displayName: "Spices",
+    image: "/attached_assets/generated_images/spices_category.png",
+    itemCount: 15,
+    description: "Premium spices and seasonings"
   },
   {
     name: "Batters",
