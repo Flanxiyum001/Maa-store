@@ -123,6 +123,8 @@ Feature-List/
 8. ✅ Added WhatsApp contact button in footer (visitors can message +91 83400 00987)
 9. ✅ Set up project on Replit with Express.js backend and React frontend
 10. ✅ Configured deployment for production autoscale
+11. ✅ Removed email newsletter signup - replaced with WhatsApp-only contact
+12. ✅ Added Privacy Policy page with full content (linked in footer)
 
 ## Next Steps (Ready for Launch)
 - Click **Publish** button in Replit to go live

@@ -1,4 +1,5 @@
 import { MapPin, Phone, MessageCircle, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
+import { Link } from "wouter";
 
 export function Footer() {
   return (
@@ -26,10 +27,10 @@ export function Footer() {
           <div>
             <h4 className="font-medium mb-4 text-foreground">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="hover:text-primary transition-colors duration-300 cursor-pointer">About Us</li>
+              <li><Link href="/about" className="hover:text-primary transition-colors duration-300 cursor-pointer">About Us</Link></li>
               <li className="hover:text-primary transition-colors duration-300 cursor-pointer">Our Process</li>
-              <li className="hover:text-primary transition-colors duration-300 cursor-pointer">Contact</li>
-              <li className="hover:text-primary transition-colors duration-300 cursor-pointer">Privacy Policy</li>
+              <li><a href="https://wa.me/919834000987" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-300">Contact</a></li>
+              <li><Link href="/privacy-policy" className="hover:text-primary transition-colors duration-300 cursor-pointer">Privacy Policy</Link></li>
             </ul>
           </div>
           
