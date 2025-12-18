@@ -37,11 +37,17 @@ A modern, responsive e-commerce store for **Maa Traditional Lifestyle Store**, a
 
 ## Technology Stack
 - **Frontend**: React + TypeScript + Vite
+- **Backend**: Express.js (TypeScript)
 - **Styling**: Tailwind CSS + shadcn/ui
 - **Routing**: Wouter
-- **State Management**: React Query
+- **State Management**: React Query + Zustand
 - **Image Handling**: @assets Vite alias for bundling
-- **Deployment**: Netlify (production-ready)
+- **Deployment**: Replit Autoscale (production-ready)
+
+## Running the Project
+- **Development**: `cd Feature-List && npm run dev` (runs on port 5000)
+- **Build**: `cd Feature-List && npm run build`
+- **Production**: `cd Feature-List && npm run start`
 
 ## Project Structure
 ```
