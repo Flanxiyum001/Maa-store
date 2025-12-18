@@ -130,20 +130,15 @@ export default function Home() {
              <div className="flex justify-center mb-6 animate-float">
                <Droplet className="h-12 w-12 text-accent/80" />
              </div>
-             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Experience True Purity</h2>
+             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Got Questions? Let's Connect!</h2>
              <p className="text-lg text-primary-foreground/90 mb-8">
-               Subscribe to our newsletter for exclusive offers, organic recipes, health tips, and seasonal updates on our freshest products.
+               Reach out to us on WhatsApp for exclusive offers, product inquiries, recipes, health tips, and updates on our freshest products. We're here to help!
              </p>
-             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-               <input 
-                 type="email" 
-                 placeholder="Enter your email" 
-                 className="h-12 px-6 rounded-full bg-white/15 border border-white/30 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white/20 w-full sm:w-auto min-w-[300px] transition-all duration-300"
-               />
-               <Button size="lg" className="h-12 rounded-full bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 active:scale-95 transition-all duration-300 font-semibold shadow-lg">
-                 Subscribe
-               </Button>
-             </div>
+             <Button size="lg" className="h-12 px-8 rounded-full bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 active:scale-95 transition-all duration-300 font-semibold shadow-lg" asChild>
+               <a href="https://wa.me/919834000987" target="_blank" rel="noopener noreferrer">
+                 Chat on WhatsApp
+               </a>
+             </Button>
            </div>
         </section>
       </main>
