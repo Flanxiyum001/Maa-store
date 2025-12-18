@@ -47,7 +47,7 @@ export const categoryCards: CategoryCard[] = [
     name: "Oils",
     displayName: "Cold Pressed Edible Oils",
     image: coldPressedOilsCategoryImage,
-    itemCount: 8,
+    itemCount: 7,
     description: "Pure, cold-pressed oils"
   },
   {
@@ -155,15 +155,42 @@ export const products = [
     id: 4,
     name: "Premium Cold-Pressed Mustard Oil",
     description: "Authentic mustard oil with a distinctive flavor profile. Traditionally used in Indian cuisine for cooking and massage.",
-    price: 349,
+    price: 190,
     category: "Oils",
     image: mustardOilImage,
     featured: true
   },
+  {
+    id: 5,
+    name: "Cold-Pressed Sunflower Oil",
+    description: "Pure cold-pressed sunflower oil. Light and versatile for cooking. Rich in Vitamin E and essential fatty acids.",
+    price: 235,
+    category: "Oils",
+    image: coconutOilImage,
+    featured: false
+  },
+  {
+    id: 6,
+    name: "Cold-Pressed Black Sesame Oil",
+    description: "Premium black sesame oil extracted using traditional cold-pressing methods. Rich in minerals and antioxidants.",
+    price: 265,
+    category: "Oils",
+    image: sesameOilImage,
+    featured: true
+  },
+  {
+    id: 7,
+    name: "Butter Free Mahuri (Bippal) Oil",
+    description: "Pure mahuri oil extracted traditionally. Perfect for cooking and wellness. Free from any additives or butter.",
+    price: 140,
+    category: "Oils",
+    image: coconutOilImage,
+    featured: false
+  },
   
   // Millets
   {
-    id: 5,
+    id: 8,
     name: "Premium Millets Mix",
     description: "Organic blend of various millets including ragi, jowar, and bajra. High in fiber and nutrients. Perfect for healthy eating.",
     price: 189,
@@ -174,7 +201,7 @@ export const products = [
 
   // Dhals & Pulses
   {
-    id: 6,
+    id: 9,
     name: "Premium Dhals Collection",
     description: "Assorted organic dhals including toor dal, moong dal, and masoor dal. Fresh and protein-rich. Perfect for daily cooking.",
     price: 249,
@@ -185,7 +212,7 @@ export const products = [
 
   // Dry Fruits
   {
-    id: 7,
+    id: 10,
     name: "Premium Dry Fruits Mix",
     description: "Organic assortment of almonds, cashews, raisins, and more. Fresh, premium quality. Rich in nutrients and antioxidants.",
     price: 599,
@@ -196,7 +223,7 @@ export const products = [
 
   // Atta & Flours
   {
-    id: 8,
+    id: 11,
     name: "Organic Whole Wheat Atta",
     description: "100% pure whole wheat flour. Stone-ground traditionally. Perfect for making soft rotis and chapatis. No additives.",
     price: 129,
@@ -207,7 +234,7 @@ export const products = [
 
   // Ghee
   {
-    id: 9,
+    id: 12,
     name: "Pure Cow Ghee",
     description: "Traditionally made, pure cow ghee. Rich golden color. Perfect for cooking, religious rituals, and Ayurvedic use.",
     price: 799,
@@ -215,10 +242,19 @@ export const products = [
     image: gheeImage,
     featured: true
   },
+  {
+    id: 13,
+    name: "A2 Desi Cow Ghee",
+    description: "Premium A2 desi cow ghee. Rich in nutrients and easier to digest. Traditionally made for optimal health benefits.",
+    price: 500,
+    category: "Ghee",
+    image: gheeImage,
+    featured: true
+  },
 
   // Honey
   {
-    id: 10,
+    id: 14,
     name: "Raw Unfiltered Honey",
     description: "Pure raw honey, unfiltered and unheated. Natural crystallization. Rich in enzymes and nutrients. Best quality Indian honey.",
     price: 349,
@@ -229,7 +265,7 @@ export const products = [
 
   // Batters
   {
-    id: 11,
+    id: 15,
     name: "Traditional Idli Dosa Batter",
     description: "Freshly fermented idli dosa batter. Made with quality rice and urad dal. Ready to use. No preservatives.",
     price: 89,
@@ -239,7 +275,7 @@ export const products = [
   },
 
   {
-    id: 12,
+    id: 16,
     name: "Complete Pantry Bundle",
     description: "Curated selection of our bestselling items. Oils, dhals, ghee, honey, and more. Perfect starter pack.",
     price: 1999,
