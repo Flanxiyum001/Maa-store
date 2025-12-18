@@ -2,11 +2,22 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { products, categories } from "@/lib/data";
 import { ProductCard } from "@/components/product-card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 
 export default function Shop() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [location] = useLocation();
+
+  useEffect(() => {
+    // Parse category from URL query params
+    const params = new URLSearchParams(location.split('?')[1]);
+    const categoryParam = params.get('category');
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [location]);
 
   const filteredProducts = selectedCategory === "All" 
     ? products 
