@@ -9,12 +9,14 @@ import Home from "@/pages/home";
 import Shop from "@/pages/shop";
 import ProductDetails from "@/pages/product-details";
 import Checkout from "@/pages/checkout";
+import About from "@/pages/about";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/shop" component={Shop} />
+      <Route path="/about" component={About} />
       <Route path="/product/:id" component={ProductDetails} />
       <Route path="/checkout" component={Checkout} />
       <Route component={NotFound} />
