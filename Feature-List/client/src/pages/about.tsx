@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Heart, Leaf, Users, Droplet } from "lucide-react";
+import { Heart, Leaf, Users, Droplet, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -143,6 +143,57 @@ export default function About() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Social Media Section */}
+        <section className="py-24">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12 animate-in fade-in duration-700">
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Connect With Us</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Follow us on social media for updates, recipes, wellness tips, and exclusive offers
+              </p>
+            </div>
+
+            <div className="flex items-center justify-center gap-8 mb-12">
+              <a href="https://www.youtube.com/@MaaTLStore_" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '0ms' }}>
+                <div className="h-16 w-16 rounded-full bg-background border-2 border-border/40 group-hover:border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
+                  <Youtube className="h-8 w-8" />
+                </div>
+                <span className="text-sm font-medium">YouTube</span>
+              </a>
+              <a href="https://www.instagram.com/maatlstore/?hl=en" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '100ms' }}>
+                <div className="h-16 w-16 rounded-full bg-background border-2 border-border/40 group-hover:border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
+                  <Instagram className="h-8 w-8" />
+                </div>
+                <span className="text-sm font-medium">Instagram</span>
+              </a>
+              <a href="https://www.facebook.com/maatlstore" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '200ms' }}>
+                <div className="h-16 w-16 rounded-full bg-background border-2 border-border/40 group-hover:border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
+                  <Facebook className="h-8 w-8" />
+                </div>
+                <span className="text-sm font-medium">Facebook</span>
+              </a>
+              <a href="https://x.com/MaaTLStore" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '300ms' }}>
+                <div className="h-16 w-16 rounded-full bg-background border-2 border-border/40 group-hover:border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
+                  <Twitter className="h-8 w-8" />
+                </div>
+                <span className="text-sm font-medium">Twitter/X</span>
+              </a>
+            </div>
+
+            <div className="text-center">
+              <p className="text-muted-foreground mb-6">Download our mobile app for the best shopping experience</p>
+              <div className="flex items-center justify-center gap-4">
+                <a href="https://play.google.com/store/apps/details?id=com.maatlstore&pli=1" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 active:scale-95">
+                  Google Play
+                </a>
+                <a href="https://apps.apple.com/app/maatlstore/id6458098461" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 active:scale-95">
+                  Apple App Store
+                </a>
               </div>
             </div>
           </div>

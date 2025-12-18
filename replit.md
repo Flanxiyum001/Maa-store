@@ -98,3 +98,11 @@ Feature-List/
 - `Feature-List/client/src/pages/about.tsx` - Company story
 - `Feature-List/vite.config.ts` - Vite configuration with @assets alias
 - `Feature-List/client/public/logo.png` - Store logo
+
+## Social Media & Presence
+- **YouTube**: https://www.youtube.com/@MaaTLStore_
+- **Instagram**: https://www.instagram.com/maatlstore/?hl=en
+- **Facebook**: https://www.facebook.com/maatlstore
+- **Twitter/X**: https://x.com/MaaTLStore
+- **Google Play App**: https://play.google.com/store/apps/details?id=com.maatlstore&pli=1
+- **Apple App Store**: https://apps.apple.com/app/maatlstore/id6458098461

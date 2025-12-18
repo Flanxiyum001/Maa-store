@@ -1,4 +1,4 @@
-import { MapPin, Phone } from "lucide-react";
+import { MapPin, Phone, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 
 export function Footer() {
   return (
@@ -89,6 +89,35 @@ export function Footer() {
           </div>
         </div>
         
+        {/* Social Media Links */}
+        <div className="flex items-center justify-center gap-6 mb-8 py-8 border-t border-border/40">
+          <a href="https://www.youtube.com/@MaaTLStore_" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" title="YouTube">
+            <Youtube className="h-5 w-5" />
+          </a>
+          <a href="https://www.instagram.com/maatlstore/?hl=en" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" title="Instagram">
+            <Instagram className="h-5 w-5" />
+          </a>
+          <a href="https://www.facebook.com/maatlstore" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" title="Facebook">
+            <Facebook className="h-5 w-5" />
+          </a>
+          <a href="https://x.com/MaaTLStore" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" title="Twitter/X">
+            <Twitter className="h-5 w-5" />
+          </a>
+        </div>
+
+        <div className="text-center text-sm text-muted-foreground mb-6">
+          <p className="mb-3">Download our mobile app for exclusive deals!</p>
+          <div className="flex items-center justify-center gap-4">
+            <a href="https://play.google.com/store/apps/details?id=com.maatlstore&pli=1" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-primary transition-colors duration-300">
+              Google Play
+            </a>
+            <span className="text-border/40">•</span>
+            <a href="https://apps.apple.com/app/maatlstore/id6458098461" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-primary transition-colors duration-300">
+              Apple App Store
+            </a>
+          </div>
+        </div>
+
         <div className="text-center text-sm text-muted-foreground">
           © {new Date().getFullYear()} Maa Store. All rights reserved. Located in Secunderabad, Hyderabad, India. 🌾
         </div>
