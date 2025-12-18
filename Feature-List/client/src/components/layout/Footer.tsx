@@ -32,6 +32,8 @@ export function Footer() {
               <li><a href="https://wa.me/919834000987" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-300">Contact</a></li>
               <li><Link href="/privacy-policy" className="hover:text-primary transition-colors duration-300">Privacy Policy</Link></li>
               <li><Link href="/terms-and-conditions" className="hover:text-primary transition-colors duration-300">Terms & Conditions</Link></li>
+              <li><Link href="/return-policy" className="hover:text-primary transition-colors duration-300">Return & Refund</Link></li>
+              <li><Link href="/shipping-policy" className="hover:text-primary transition-colors duration-300">Shipping Policy</Link></li>
             </ul>
           </div>
           

@@ -12,6 +12,8 @@ import Checkout from "@/pages/checkout";
 import About from "@/pages/about";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import TermsAndConditions from "@/pages/terms-and-conditions";
+import ReturnPolicy from "@/pages/return-policy";
+import ShippingPolicy from "@/pages/shipping-policy";
 
 function Router() {
   return (
@@ -21,6 +23,8 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-and-conditions" component={TermsAndConditions} />
+      <Route path="/return-policy" component={ReturnPolicy} />
+      <Route path="/shipping-policy" component={ShippingPolicy} />
       <Route path="/product/:id" component={ProductDetails} />
       <Route path="/checkout" component={Checkout} />
       <Route component={NotFound} />
