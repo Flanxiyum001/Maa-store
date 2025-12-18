@@ -70,7 +70,7 @@ export function setupAuth(app: Express) {
     }
   });
 
-  // Register endpoint
+  // Register endpoint - NEVER allow isAdmin from request body for security
   app.post("/api/register", async (req, res, next) => {
     try {
       const existingUser = await storage.getUserByUsername(req.body.username);
@@ -82,7 +82,7 @@ export function setupAuth(app: Express) {
         username: req.body.username,
         password: await hashPassword(req.body.password),
         email: req.body.email,
-        isAdmin: req.body.isAdmin || false,
+        isAdmin: false, // Always false - admin creation only via secure endpoint
       });
 
       req.login(user, (err) => {
