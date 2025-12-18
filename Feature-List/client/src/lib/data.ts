@@ -10,6 +10,17 @@ import attaImage from "@assets/generated_images/organic_whole_wheat_atta.png";
 import gheeImage from "@assets/generated_images/pure_indian_ghee.png";
 import honeyImage from "@assets/generated_images/raw_indian_honey.png";
 import batterImage from "@assets/generated_images/idli_dosa_batter.png";
+import coldPressedOilsCategoryImage from "@assets/generated_images/cold_pressed_oils_category.png";
+import milletsRiceFLakesImage from "@assets/generated_images/millets_category.png";
+import dhalsPulsesCategoryImage from "@assets/generated_images/dhals_pulses_category.png";
+import dryFruitsCategoryImage from "@assets/generated_images/dry_fruits_category.png";
+import dailyEssentialsImage from "@assets/generated_images/daily_essentials_category.png";
+import masalasCategoryImage from "@assets/generated_images/masalas_category.png";
+import spicesCategoryImage from "@assets/generated_images/spices_category.png";
+import snacksSavoriesCategoryImage from "@assets/generated_images/snacks_savories_category.png";
+import healthCosmeticsCategoryImage from "@assets/generated_images/health_cosmetics_category.png";
+import essentialOilsCategoryImage from "@assets/generated_images/essential_oils_category.png";
+import battersCategoryImage from "@assets/generated_images/batters.png";
 
 export const categories = [
   "All",
@@ -35,77 +46,77 @@ export const categoryCards: CategoryCard[] = [
   {
     name: "Oils",
     displayName: "Cold Pressed Edible Oils",
-    image: "/attached_assets/generated_images/cold_pressed_oils_category.png",
+    image: coldPressedOilsCategoryImage,
     itemCount: 8,
     description: "Pure, cold-pressed oils"
   },
   {
     name: "Millets",
     displayName: "Millet / Rice / Flakes",
-    image: "/attached_assets/generated_images/millets_category.png",
+    image: milletsRiceFLakesImage,
     itemCount: 15,
     description: "Nutritious grains and cereals"
   },
   {
     name: "Dhals & Pulses",
     displayName: "Dhals & Pulses",
-    image: "/attached_assets/generated_images/dhals_pulses_category.png",
+    image: dhalsPulsesCategoryImage,
     itemCount: 9,
     description: "Protein-rich pulses"
   },
   {
     name: "Dry Fruits",
     displayName: "Dry Fruits",
-    image: "/attached_assets/generated_images/dry_fruits_category.png",
+    image: dryFruitsCategoryImage,
     itemCount: 9,
     description: "Premium dry fruits"
   },
   {
     name: "DailyEssentials",
     displayName: "Daily Essentials",
-    image: "/attached_assets/generated_images/daily_essentials_category.png",
+    image: dailyEssentialsImage,
     itemCount: 101,
     description: "Essential spices and daily items"
   },
   {
     name: "Masalas",
     displayName: "Daily Masala",
-    image: "/attached_assets/generated_images/masalas_category.png",
+    image: masalasCategoryImage,
     itemCount: 12,
     description: "Premium masalas and spice blends"
   },
   {
     name: "Spices",
     displayName: "Spices",
-    image: "/attached_assets/generated_images/spices_category.png",
+    image: spicesCategoryImage,
     itemCount: 15,
     description: "Premium spices and seasonings"
   },
   {
     name: "Snacks",
     displayName: "Snacks / Savories",
-    image: "/attached_assets/generated_images/snacks_savories_category.png",
+    image: snacksSavoriesCategoryImage,
     itemCount: 8,
     description: "Delicious snacks and savories"
   },
   {
     name: "Health",
     displayName: "Natural / Plant based Health / Cosmetics",
-    image: "/attached_assets/generated_images/health_cosmetics_category.png",
+    image: healthCosmeticsCategoryImage,
     itemCount: 40,
     description: "Natural health and wellness products"
   },
   {
     name: "EssentialOils",
     displayName: "Essential Oils",
-    image: "/attached_assets/generated_images/essential_oils_category.png",
+    image: essentialOilsCategoryImage,
     itemCount: 14,
     description: "Pure essential oils for wellness"
   },
   {
     name: "Batters",
     displayName: "Batter",
-    image: "/attached_assets/generated_images/batters.png",
+    image: battersCategoryImage,
     itemCount: 5,
     description: "Traditional batters"
   }
