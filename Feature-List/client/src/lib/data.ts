@@ -42,7 +42,7 @@ export const categoryCards: CategoryCard[] = [
   {
     name: "Millets",
     displayName: "Millet / Rice / Flakes",
-    image: milletsImage,
+    image: "/attached_assets/generated_images/millets_category.png",
     itemCount: 15,
     description: "Nutritious grains and cereals"
   },
