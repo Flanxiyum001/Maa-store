@@ -4,6 +4,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
+import { AuthProvider } from "@/hooks/use-auth";
+import { ProtectedRoute } from "@/lib/protected-route";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Shop from "@/pages/shop";
@@ -15,6 +17,11 @@ import TermsAndConditions from "@/pages/terms-and-conditions";
 import ReturnPolicy from "@/pages/return-policy";
 import ShippingPolicy from "@/pages/shipping-policy";
 import CancellationPolicy from "@/pages/cancellation-policy";
+import AdminLogin from "@/pages/admin/login";
+import AdminDashboard from "@/pages/admin/dashboard";
+import AdminProducts from "@/pages/admin/products";
+import AdminOrders from "@/pages/admin/orders";
+import AdminCategories from "@/pages/admin/categories";
 
 function Router() {
   return (
@@ -29,6 +36,11 @@ function Router() {
       <Route path="/cancellation-policy" component={CancellationPolicy} />
       <Route path="/product/:id" component={ProductDetails} />
       <Route path="/checkout" component={Checkout} />
+      <Route path="/admin/login" component={AdminLogin} />
+      <ProtectedRoute path="/admin" component={AdminDashboard} />
+      <ProtectedRoute path="/admin/products" component={AdminProducts} />
+      <ProtectedRoute path="/admin/orders" component={AdminOrders} />
+      <ProtectedRoute path="/admin/categories" component={AdminCategories} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -37,10 +49,12 @@ function Router() {
 function AppContent() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
