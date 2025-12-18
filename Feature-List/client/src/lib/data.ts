@@ -89,6 +89,13 @@ export const categoryCards: CategoryCard[] = [
     description: "Delicious snacks and savories"
   },
   {
+    name: "Health",
+    displayName: "Natural / Plant based Health / Cosmetics",
+    image: "/attached_assets/generated_images/health_cosmetics_category.png",
+    itemCount: 40,
+    description: "Natural health and wellness products"
+  },
+  {
     name: "Batters",
     displayName: "Batter",
     image: "/attached_assets/generated_images/batters.png",
