@@ -17,6 +17,7 @@ import TermsAndConditions from "@/pages/terms-and-conditions";
 import ReturnPolicy from "@/pages/return-policy";
 import ShippingPolicy from "@/pages/shipping-policy";
 import CancellationPolicy from "@/pages/cancellation-policy";
+import Login from "@/pages/login";
 import AdminLogin from "@/pages/admin/login";
 import AdminDashboard from "@/pages/admin/dashboard";
 import AdminProducts from "@/pages/admin/products";
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/cancellation-policy" component={CancellationPolicy} />
       <Route path="/product/:id" component={ProductDetails} />
       <Route path="/checkout" component={Checkout} />
+      <Route path="/login" component={Login} />
       <Route path="/admin/login" component={AdminLogin} />
       <ProtectedRoute path="/admin" component={AdminDashboard} />
       <ProtectedRoute path="/admin/products" component={AdminProducts} />
