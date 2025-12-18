@@ -56,7 +56,7 @@ export const categoryCards: CategoryCard[] = [
   {
     name: "Dry Fruits",
     displayName: "Dry Fruits",
-    image: dryFruitsImage,
+    image: "/attached_assets/generated_images/dry_fruits_category.png",
     itemCount: 9,
     description: "Premium dry fruits"
   },
