@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, ShieldCheck } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Loader2, ShieldCheck, AlertCircle } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
@@ -14,11 +15,28 @@ export default function AdminLogin() {
   const { user, loginMutation, isLoading: authLoading } = useAuth();
   const { toast } = useToast();
   const [isSetup, setIsSetup] = useState(false);
+  const [allowedEmails, setAllowedEmails] = useState<string[]>([]);
+  const [requiresWhitelist, setRequiresWhitelist] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     email: "",
   });
+
+  // Fetch allowed admin emails
+  useEffect(() => {
+    const fetchAllowedEmails = async () => {
+      try {
+        const response = await fetch("/api/admin/allowed-emails");
+        const data = await response.json();
+        setAllowedEmails(data.allowedEmails);
+        setRequiresWhitelist(data.requiresWhitelist);
+      } catch (error) {
+        console.error("Failed to fetch allowed emails", error);
+      }
+    };
+    fetchAllowedEmails();
+  }, []);
 
   useEffect(() => {
     if (user?.isAdmin) {
@@ -79,6 +97,23 @@ export default function AdminLogin() {
             }
           </CardDescription>
         </CardHeader>
+        {isSetup && requiresWhitelist && allowedEmails.length > 0 && (
+          <div className="px-6 pt-0">
+            <Alert className="bg-blue-50 border-blue-200">
+              <AlertCircle className="h-4 w-4 text-blue-600" />
+              <AlertDescription className="text-blue-800 text-sm">
+                <strong>Allowed admin emails:</strong>
+                <div className="mt-2 space-y-1">
+                  {allowedEmails.map((email) => (
+                    <div key={email} className="text-xs font-mono bg-white px-2 py-1 rounded">
+                      {email}
+                    </div>
+                  ))}
+                </div>
+              </AlertDescription>
+            </Alert>
+          </div>
+        )}
         <CardContent>
           <form onSubmit={isSetup ? handleSetup : handleLogin} className="space-y-4">
             <div className="space-y-2">

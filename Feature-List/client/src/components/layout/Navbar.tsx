@@ -106,12 +106,7 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <div className="hidden sm:flex gap-2 items-center">
-              <Link href="/admin/login">
-                <Button variant="outline" size="sm" className="text-xs">
-                  Admin
-                </Button>
-              </Link>
+            <div className="hidden sm:flex gap-2">
               <Link href="/login">
                 <Button variant="ghost" size="sm">
                   Login
@@ -146,9 +141,6 @@ export function Navbar() {
                   {!user && (
                     <>
                       <div className="my-4 border-t" />
-                      <Link href="/admin/login" className="text-lg font-medium hover:text-primary transition-colors duration-300" onClick={() => setIsMobileMenuOpen(false)}>
-                        Admin Login
-                      </Link>
                       <Link href="/login" className="text-lg font-medium hover:text-primary transition-colors duration-300" onClick={() => setIsMobileMenuOpen(false)}>
                         Login
                       </Link>

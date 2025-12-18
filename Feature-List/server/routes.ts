@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { setupAuth, requireAdmin, requireAuth, hashPassword } from "./auth";
+import { setupAuth, requireAdmin, requireAuth, hashPassword, isEmailAllowedForAdmin, getAllowedAdminEmails } from "./auth";
 import { insertCategorySchema, insertProductSchema, insertOrderSchema } from "@shared/schema";
 import { User as SelectUser } from "@shared/schema";
 
@@ -318,19 +318,30 @@ export async function registerRoutes(
         return res.status(403).json({ message: "Admin user already exists. Please login." });
       }
 
-      const existingUser = await storage.getUserByUsername(req.body.username);
+      const { username, password, email } = req.body;
+
+      // Check email whitelist
+      if (!isEmailAllowedForAdmin(email)) {
+        const allowedEmails = getAllowedAdminEmails();
+        return res.status(403).json({ 
+          message: "This email is not authorized to be an admin. Contact the store owner.",
+          allowedEmails
+        });
+      }
+
+      const existingUser = await storage.getUserByUsername(username);
       if (existingUser) {
         return res.status(400).json({ message: "Username already exists" });
       }
 
       const user = await storage.createUser({
-        username: req.body.username,
-        password: await hashPassword(req.body.password),
-        email: req.body.email,
+        username,
+        password: await hashPassword(password),
+        email,
         isAdmin: true,
       });
 
-      const { password, ...safeUser } = user;
+      const { password: _, ...safeUser } = user;
       res.status(201).json(safeUser);
     } catch (error: any) {
       res.status(500).json({ message: error.message || "Failed to create admin" });

@@ -15,6 +15,25 @@ declare global {
 
 const scryptAsync = promisify(scrypt);
 
+// Get list of allowed admin emails from environment variable
+export function getAllowedAdminEmails(): string[] {
+  const adminEmails = process.env.ADMIN_EMAILS || "";
+  return adminEmails
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter((email) => email.length > 0);
+}
+
+// Check if email is allowed to be admin
+export function isEmailAllowedForAdmin(email: string): boolean {
+  const allowedEmails = getAllowedAdminEmails();
+  if (allowedEmails.length === 0) {
+    // If no emails are configured, only the first admin can be created
+    return true;
+  }
+  return allowedEmails.includes(email.toLowerCase());
+}
+
 export async function hashPassword(password: string) {
   const salt = randomBytes(16).toString("hex");
   const buf = (await scryptAsync(password, salt, 64)) as Buffer;
@@ -123,6 +142,15 @@ export function setupAuth(app: Express) {
     if (!req.isAuthenticated()) return res.sendStatus(401);
     const { password, ...safeUser } = req.user as SelectUser;
     res.json(safeUser);
+  });
+
+  // Get allowed admin emails (public endpoint for frontend)
+  app.get("/api/admin/allowed-emails", (req, res) => {
+    const allowedEmails = getAllowedAdminEmails();
+    res.json({ 
+      requiresWhitelist: allowedEmails.length > 0,
+      allowedEmails: allowedEmails
+    });
   });
 }
 
