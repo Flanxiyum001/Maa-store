@@ -35,7 +35,7 @@ export const categoryCards: CategoryCard[] = [
   {
     name: "Oils",
     displayName: "Cold Pressed Edible Oils",
-    image: "/attached_assets/generated_images/cold-pressed_oils_hero.png",
+    image: "/attached_assets/generated_images/cold_pressed_oils_category.png",
     itemCount: 8,
     description: "Pure, cold-pressed oils"
   },
