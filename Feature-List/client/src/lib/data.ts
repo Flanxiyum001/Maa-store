@@ -49,7 +49,7 @@ export const categoryCards: CategoryCard[] = [
   {
     name: "Dhals & Pulses",
     displayName: "Dhals & Pulses",
-    image: dhalsImage,
+    image: "/attached_assets/generated_images/dhals_pulses_category.png",
     itemCount: 9,
     description: "Protein-rich pulses"
   },
@@ -80,6 +80,13 @@ export const categoryCards: CategoryCard[] = [
     image: "/attached_assets/generated_images/spices_category.png",
     itemCount: 15,
     description: "Premium spices and seasonings"
+  },
+  {
+    name: "Snacks",
+    displayName: "Snacks / Savories",
+    image: "/attached_assets/generated_images/snacks_savories_category.png",
+    itemCount: 8,
+    description: "Delicious snacks and savories"
   },
   {
     name: "Batters",
