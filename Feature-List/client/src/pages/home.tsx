@@ -1,7 +1,8 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { products, heroImage } from "@/lib/data";
+import { products, heroImage, categoryCards } from "@/lib/data";
 import { ProductCard } from "@/components/product-card";
+import { CategoryCard } from "@/components/category-card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ArrowRight, Leaf, Truck, ShieldCheck, Droplet } from "lucide-react";
@@ -82,8 +83,16 @@ export default function Home() {
         <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 animate-in fade-in duration-700">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Our Complete Range</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">Cold-pressed oils, organic dhals and pulses, millets, ghee, honey, dry fruits, atta, and traditional batters. Everything your kitchen needs.</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Shop by Category</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">Explore our wide range of premium products organized by category.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-700 delay-200">
+              {categoryCards.map((category, idx) => (
+                <div key={category.name} className="animate-in fade-in duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
+                  <CategoryCard category={category} />
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -23,6 +23,59 @@ export const categories = [
   "Batters"
 ];
 
+export interface CategoryCard {
+  name: string;
+  displayName: string;
+  image: string;
+  itemCount: number;
+  description?: string;
+}
+
+export const categoryCards: CategoryCard[] = [
+  {
+    name: "Oils",
+    displayName: "Cold Pressed Edible Oils",
+    image: "/attached_assets/generated_images/cold-pressed_oils_hero.png",
+    itemCount: 8,
+    description: "Pure, cold-pressed oils"
+  },
+  {
+    name: "Millets",
+    displayName: "Millet / Rice / Flakes",
+    image: milletsImage,
+    itemCount: 15,
+    description: "Nutritious grains and cereals"
+  },
+  {
+    name: "Dhals & Pulses",
+    displayName: "Dhals & Pulses",
+    image: dhalsImage,
+    itemCount: 9,
+    description: "Protein-rich pulses"
+  },
+  {
+    name: "Dry Fruits",
+    displayName: "Dry Fruits",
+    image: dryFruitsImage,
+    itemCount: 9,
+    description: "Premium dry fruits"
+  },
+  {
+    name: "Spices",
+    displayName: "Daily Masala",
+    image: "/attached_assets/generated_images/cold-pressed_oils_hero.png",
+    itemCount: 12,
+    description: "Essential spices"
+  },
+  {
+    name: "Batters",
+    displayName: "Batter",
+    image: "/attached_assets/generated_images/batters.png",
+    itemCount: 5,
+    description: "Traditional batters"
+  }
+];
+
 export const products = [
   // Oils
   {
