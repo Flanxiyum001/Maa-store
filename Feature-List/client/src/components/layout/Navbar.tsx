@@ -1,17 +1,29 @@
 import { Link, useLocation } from "wouter";
-import { ShoppingCart, Menu, Search } from "lucide-react";
+import { ShoppingCart, Menu, Search, LogOut, User } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/ui/cart-drawer";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useCart } from "@/lib/store";
+import { useAuth } from "@/hooks/use-auth";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
   const [location] = useLocation();
   const itemCount = useCart(state => state.getItemCount());
+  const { user, logoutMutation } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    logoutMutation.mutate();
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/75 backdrop-blur-xl">
@@ -61,6 +73,52 @@ export function Navbar() {
               )}
             </Button>
           </CartDrawer>
+
+          {/* Auth Dropdown */}
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="hover:bg-secondary/50 transition-all duration-300">
+                  <User className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <div className="px-3 py-2 border-b">
+                  <p className="text-sm font-medium">{user.username}</p>
+                  {user.email && <p className="text-xs text-muted-foreground">{user.email}</p>}
+                </div>
+                {user.isAdmin && (
+                  <>
+                    <Link href="/admin">
+                      <DropdownMenuItem className="cursor-pointer">
+                        Admin Dashboard
+                      </DropdownMenuItem>
+                    </Link>
+                  </>
+                )}
+                <DropdownMenuItem 
+                  className="cursor-pointer text-destructive"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div className="hidden sm:flex gap-2">
+              <Link href="/login">
+                <Button variant="ghost" size="sm">
+                  Login
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button size="sm">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
+          )}
           
           {/* Mobile Menu Trigger */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -80,6 +138,42 @@ export function Navbar() {
                   <Link href="/about" className="text-lg font-medium hover:text-primary transition-colors duration-300" onClick={() => setIsMobileMenuOpen(false)}>
                     About Us
                   </Link>
+                  {!user && (
+                    <>
+                      <div className="my-4 border-t" />
+                      <Link href="/login" className="text-lg font-medium hover:text-primary transition-colors duration-300" onClick={() => setIsMobileMenuOpen(false)}>
+                        Login
+                      </Link>
+                      <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Button className="w-full">Sign Up</Button>
+                      </Link>
+                    </>
+                  )}
+                  {user && (
+                    <>
+                      <div className="my-4 border-t" />
+                      <div className="px-2 py-2">
+                        <p className="text-sm font-medium">{user.username}</p>
+                        {user.email && <p className="text-xs text-muted-foreground">{user.email}</p>}
+                      </div>
+                      {user.isAdmin && (
+                        <Link href="/admin" className="text-lg font-medium hover:text-primary transition-colors duration-300" onClick={() => setIsMobileMenuOpen(false)}>
+                          Admin Dashboard
+                        </Link>
+                      )}
+                      <Button 
+                        variant="destructive" 
+                        className="w-full mt-2"
+                        onClick={() => {
+                          handleLogout();
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Logout
+                      </Button>
+                    </>
+                  )}
                </div>
             </SheetContent>
           </Sheet>
