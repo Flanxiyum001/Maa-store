@@ -88,11 +88,46 @@ export default function About() {
           </div>
         </section>
 
+        {/* Impact Statistics Section */}
+        <section className="py-24 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 relative overflow-hidden">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-0 w-72 h-72 bg-accent/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-40" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 opacity-30" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-16 animate-in fade-in duration-700">
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Our Impact</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">Join thousands of customers supporting traditional heritage and tribal communities</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                { number: "100%", label: "Organic", icon: "🌾" },
+                { number: "50+", label: "Tribal Partners", icon: "🤝" },
+                { number: "1000+", label: "Happy Customers", icon: "😊" },
+                { number: "11", label: "Product Categories", icon: "🛍️" }
+              ].map((stat, idx) => (
+                <div 
+                  key={idx}
+                  className="group p-8 rounded-2xl bg-background/80 backdrop-blur border border-border/40 hover:border-accent/60 hover:shadow-xl transition-all duration-500 text-center animate-in fade-in duration-700 hover:scale-105 hover:bg-primary/5"
+                  style={{ animationDelay: `${idx * 150}ms` }}
+                >
+                  <div className="text-5xl mb-4 group-hover:scale-125 transition-transform duration-500">{stat.icon}</div>
+                  <div className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
+                    {stat.number}
+                  </div>
+                  <p className="text-muted-foreground font-medium">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Values Section */}
         <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 animate-in fade-in duration-700">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -106,14 +141,19 @@ export default function About() {
                 return (
                   <div 
                     key={idx}
-                    className="p-6 rounded-2xl bg-background border border-border/40 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 text-center animate-in fade-in duration-500"
+                    className="group relative p-8 rounded-2xl bg-background border border-border/40 hover:border-primary/60 hover:shadow-xl transition-all duration-500 text-center animate-in fade-in duration-500 overflow-hidden hover:scale-105"
                     style={{ animationDelay: `${idx * 100}ms` }}
                   >
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
-                      <Icon className="h-6 w-6" />
+                    {/* Gradient Background on Hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    <div className="relative z-10">
+                      <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 group-hover:from-primary/40 group-hover:to-accent/40 flex items-center justify-center text-primary mx-auto mb-4 group-hover:scale-110 transition-all duration-500">
+                        <Icon className="h-8 w-8" />
+                      </div>
+                      <h3 className="font-serif font-bold text-lg mb-3 group-hover:text-primary transition-colors duration-300">{value.title}</h3>
+                      <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">{value.desc}</p>
                     </div>
-                    <h3 className="font-semibold mb-2">{value.title}</h3>
-                    <p className="text-sm text-muted-foreground">{value.desc}</p>
                   </div>
                 );
               })}
@@ -121,28 +161,47 @@ export default function About() {
           </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="py-24 bg-primary/5">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-12 text-center">Why Choose Maa Traditional Lifestyle Store?</h2>
+        {/* Why Choose Us - Interactive Cards */}
+        <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-1/4 right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl opacity-30" />
+            <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl opacity-30" />
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-12 text-center animate-in fade-in duration-700">Why Choose Maa?</h2>
               
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
-                  { title: "In-House Production", desc: "All products are manufactured in-house with complete quality control and transparency" },
-                  { title: "No Middlemen", desc: "Direct from tribal sources to your home—ensuring authenticity and fair pricing" },
-                  { title: "No Branded Products", desc: "100% authentic products created by us, with no external brands or compromise on quality" },
-                  { title: "Tribal Community Support", desc: "Every purchase directly supports tribal communities, helping lift families out of poverty" },
-                  { title: "Traditional Heritage", desc: "Preserving ancient food traditions and production methods that have been refined over generations" },
-                  { title: "Health & Wellness", desc: "Products created with health in mind, using only natural, chemical-free ingredients" }
+                  { title: "🏭 In-House Production", desc: "All products are manufactured in-house with complete quality control and transparency" },
+                  { title: "🚫 No Middlemen", desc: "Direct from tribal sources to your home—ensuring authenticity and fair pricing" },
+                  { title: "✨ 100% Authentic", desc: "100% authentic products created by us, with no external brands or compromise on quality" },
+                  { title: "❤️ Community Support", desc: "Every purchase directly supports tribal communities, helping lift families out of poverty" },
+                  { title: "🎭 Heritage Preservation", desc: "Preserving ancient food traditions and production methods that have been refined over generations" },
+                  { title: "🌿 Health & Wellness", desc: "Products created with health in mind, using only natural, chemical-free ingredients" }
                 ].map((item, idx) => (
-                  <div key={idx} className="flex gap-4 animate-in fade-in duration-500" style={{ animationDelay: `${idx * 50}ms` }}>
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                      ✓
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">{item.title}</h3>
-                      <p className="text-muted-foreground">{item.desc}</p>
+                  <div 
+                    key={idx} 
+                    className="group p-6 rounded-2xl bg-background/80 backdrop-blur border border-border/40 hover:border-primary/60 transition-all duration-500 animate-in fade-in duration-500 hover:shadow-lg hover:scale-105"
+                    style={{ animationDelay: `${idx * 80}ms` }}
+                  >
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    <div className="relative z-10">
+                      <div className="flex items-start gap-4">
+                        <div className="text-3xl flex-shrink-0 group-hover:scale-125 transition-transform duration-500">
+                          {item.title.split(' ')[0]}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                            {item.title.split(' ').slice(1).join(' ')}
+                          </h3>
+                          <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">{item.desc}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -151,40 +210,44 @@ export default function About() {
           </div>
         </section>
 
-        {/* Social Media Section */}
-        <section className="py-24">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12 animate-in fade-in duration-700">
+        {/* Social Media Section - Enhanced */}
+        <section className="py-24 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 relative overflow-hidden">
+          {/* Animated decorative elements */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-accent/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-30 animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 opacity-30 animate-pulse" style={{ animationDelay: '1s' }} />
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-16 animate-in fade-in duration-700">
               <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Connect With Us</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
                 Follow us on social media for updates, recipes, wellness tips, and exclusive offers
               </p>
             </div>
 
-            <div className="flex items-center justify-center gap-8 mb-12">
-              <a href="https://www.youtube.com/@MaaTLStore_" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '0ms' }}>
-                <div className="h-16 w-16 rounded-full bg-background border-2 border-border/40 group-hover:border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
-                  <Youtube className="h-8 w-8" />
+            <div className="flex items-center justify-center gap-8 mb-16 flex-wrap">
+              <a href="https://www.youtube.com/@MaaTLStore_" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '0ms' }}>
+                <div className="relative h-20 w-20 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 border-2 border-border/40 group-hover:border-primary/80 flex items-center justify-center group-hover:shadow-xl group-hover:shadow-primary/20 transition-all duration-500 group-hover:scale-110">
+                  <Youtube className="h-10 w-10 group-hover:text-primary transition-colors" />
                 </div>
-                <span className="text-sm font-medium">YouTube</span>
+                <span className="text-sm font-semibold">YouTube</span>
               </a>
-              <a href="https://www.instagram.com/maatlstore/?hl=en" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '100ms' }}>
-                <div className="h-16 w-16 rounded-full bg-background border-2 border-border/40 group-hover:border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
-                  <Instagram className="h-8 w-8" />
+              <a href="https://www.instagram.com/maatlstore/?hl=en" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '100ms' }}>
+                <div className="relative h-20 w-20 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 border-2 border-border/40 group-hover:border-primary/80 flex items-center justify-center group-hover:shadow-xl group-hover:shadow-primary/20 transition-all duration-500 group-hover:scale-110">
+                  <Instagram className="h-10 w-10 group-hover:text-primary transition-colors" />
                 </div>
-                <span className="text-sm font-medium">Instagram</span>
+                <span className="text-sm font-semibold">Instagram</span>
               </a>
-              <a href="https://www.facebook.com/maatlstore" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '200ms' }}>
-                <div className="h-16 w-16 rounded-full bg-background border-2 border-border/40 group-hover:border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
-                  <Facebook className="h-8 w-8" />
+              <a href="https://www.facebook.com/maatlstore" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '200ms' }}>
+                <div className="relative h-20 w-20 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 border-2 border-border/40 group-hover:border-primary/80 flex items-center justify-center group-hover:shadow-xl group-hover:shadow-primary/20 transition-all duration-500 group-hover:scale-110">
+                  <Facebook className="h-10 w-10 group-hover:text-primary transition-colors" />
                 </div>
-                <span className="text-sm font-medium">Facebook</span>
+                <span className="text-sm font-semibold">Facebook</span>
               </a>
-              <a href="https://x.com/MaaTLStore" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '300ms' }}>
-                <div className="h-16 w-16 rounded-full bg-background border-2 border-border/40 group-hover:border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
-                  <Twitter className="h-8 w-8" />
+              <a href="https://x.com/MaaTLStore" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-3 hover:text-primary transition-colors duration-300 animate-in fade-in duration-500" style={{ animationDelay: '300ms' }}>
+                <div className="relative h-20 w-20 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 border-2 border-border/40 group-hover:border-primary/80 flex items-center justify-center group-hover:shadow-xl group-hover:shadow-primary/20 transition-all duration-500 group-hover:scale-110">
+                  <Twitter className="h-10 w-10 group-hover:text-primary transition-colors" />
                 </div>
-                <span className="text-sm font-medium">Twitter/X</span>
+                <span className="text-sm font-semibold">Twitter/X</span>
               </a>
             </div>
 
