@@ -49,6 +49,11 @@ export default function Signup() {
     setLocation("/login");
   };
 
+  const handleGoogleSignup = () => {
+    // Redirect to backend Google OAuth endpoint
+    window.location.href = "/api/auth/google";
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-900/5 via-amber-100/20 to-orange-100 px-4 py-8">
       <Card className="w-full max-w-sm">
@@ -114,13 +119,22 @@ export default function Signup() {
                 />
               </div>
             </div>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-col gap-2">
               <Button
                 type="submit"
                 className="w-full"
                 disabled={registerMutation.isPending}
               >
                 {registerMutation.isPending ? "Creating account..." : "Sign Up"}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                disabled={registerMutation.isPending}
+                onClick={handleGoogleSignup}
+              >
+                Sign up with Google
               </Button>
             </div>
           </form>
