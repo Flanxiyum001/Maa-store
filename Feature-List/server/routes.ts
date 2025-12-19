@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import passport from "passport";
 import { storage } from "./storage";
 import { setupAuth, requireAdmin, requireAuth, hashPassword, isEmailAllowedForAdmin, getAllowedAdminEmails } from "./auth";
 import { insertCategorySchema, insertProductSchema, insertOrderSchema } from "@shared/schema";
@@ -11,6 +12,24 @@ export async function registerRoutes(
 ): Promise<Server> {
   // Setup authentication
   setupAuth(app);
+
+  // ===== GOOGLE OAUTH ROUTES =====
+  
+  // Google OAuth login endpoint
+  app.get(
+    "/api/auth/google",
+    passport.authenticate("google", { scope: ["profile", "email"] })
+  );
+
+  // Google OAuth callback
+  app.get(
+    "/api/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/login" }),
+    (req, res) => {
+      // Successful authentication
+      res.redirect("/");
+    }
+  );
 
   // ===== PUBLIC API ROUTES =====
   

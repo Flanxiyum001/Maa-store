@@ -62,6 +62,11 @@ export default function Login() {
     setLocation("/signup");
   };
 
+  const handleGoogleLogin = () => {
+    // Redirect to backend Google OAuth endpoint
+    window.location.href = "/api/auth/google";
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-900/5 via-amber-100/20 to-orange-100 px-4 py-8">
       <Card className="w-full max-w-sm">
@@ -124,6 +129,7 @@ export default function Login() {
                 variant="outline"
                 className="w-full"
                 disabled={isLoading}
+                onClick={handleGoogleLogin}
               >
                 Login with Google
               </Button>

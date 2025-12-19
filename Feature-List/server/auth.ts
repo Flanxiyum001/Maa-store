@@ -1,5 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { Express } from "express";
 import session from "express-session";
 import { scrypt, randomBytes, timingSafeEqual } from "crypto";
@@ -78,6 +79,47 @@ export function setupAuth(app: Express) {
       }
     }),
   );
+
+  // Google OAuth Strategy
+  if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
+    passport.use(
+      new GoogleStrategy(
+        {
+          clientID: process.env.GOOGLE_CLIENT_ID,
+          clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+          callbackURL: process.env.GOOGLE_CALLBACK_URL || "/api/auth/google/callback",
+        },
+        async (accessToken: any, refreshToken: any, profile: any, done: any) => {
+          try {
+            const email = profile.emails?.[0]?.value;
+            const displayName = profile.displayName;
+            
+            if (!email) {
+              return done(null, false, { message: "No email provided by Google" });
+            }
+
+            // Try to find user by email
+            let user = await storage.getUserByEmail(email);
+            
+            if (!user) {
+              // Create new user if doesn't exist
+              const username = profile.id; // Use Google ID as username
+              user = await storage.createUser({
+                username,
+                password: await hashPassword(Math.random().toString(36)), // Random password for OAuth users
+                email,
+                isAdmin: false,
+              });
+            }
+
+            return done(null, user);
+          } catch (err) {
+            return done(err);
+          }
+        }
+      )
+    );
+  }
 
   passport.serializeUser((user, done) => done(null, user.id));
   passport.deserializeUser(async (id: string, done) => {
