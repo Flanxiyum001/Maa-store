@@ -43,4 +43,4 @@ build = ["npm", "run", "build"]
 [userenv.shared]
 GOOGLE_CLIENT_ID = "902418995248-6hvjknke6lqvon6gvrhkorfjl6f77ph1.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET = "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"
-GOOGLE_CALLBACK_URL = "http://localhost:5000/api/auth/google/callback"
+GOOGLE_CALLBACK_URL = "https://maastore.netlify.app/api/auth/google/callback"
