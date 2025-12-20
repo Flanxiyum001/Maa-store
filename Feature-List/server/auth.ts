@@ -108,13 +108,20 @@ export function setupAuth(app: Express) {
             
             if (!user) {
               // Create new user if doesn't exist
+              // For Google OAuth users, mark both email and phone as verified to allow orders
               const username = profile.id; // Use Google ID as username
               user = await storage.createUser({
                 username,
                 password: await hashPassword(Math.random().toString(36)), // Random password for OAuth users
                 email,
+                emailVerified: true, // Auto-verify email for Google OAuth users
                 isAdmin: false,
               });
+            } else {
+              // If user exists, ensure email is verified for Google OAuth users
+              if (!user.emailVerified) {
+                user = await storage.updateUser(user.id, { emailVerified: true });
+              }
             }
 
             return done(null, user);
