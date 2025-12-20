@@ -5,7 +5,12 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { metaImagesPlugin } from "./vite-plugin-meta-images";
 
+const API_BASE = process.env.VITE_API_BASE || "http://localhost:5000";
+
 export default defineConfig({
+  define: {
+    "import.meta.env.VITE_API_BASE": JSON.stringify(API_BASE),
+  },
   plugins: [
     react(),
     runtimeErrorOverlay(),

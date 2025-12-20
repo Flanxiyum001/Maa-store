@@ -1,0 +1,25 @@
+[build]
+command = "npm run build"
+publish = "dist/public"
+functions = "dist/netlify/functions"
+
+[functions]
+node_bundler = "esbuild"
+external_node_modules = ["pg", "drizzle-orm"]
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/api:splat"
+status = 200
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+condition = "!req.headers.has('Accept') || req.headers.get('Accept').includes('text/html')"
+
+[env.production]
+VITE_API_BASE = "/.netlify/functions/api"
+
+[env.development]
+VITE_API_BASE = "http://localhost:8888/.netlify/functions/api"

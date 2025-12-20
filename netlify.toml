@@ -1,9 +1,17 @@
 [build]
-  base = "Feature-List"
-  command = "npm run build:client"
-  publish = "dist/public"
+command = "npm run build"
+publish = "dist"
+
+[functions]
+directory = "server"
+node_bundler = "esbuild"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "/api/*"
+to = "/.netlify/functions/server:path"
+status = 200
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200

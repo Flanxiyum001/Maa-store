@@ -23,3 +23,9 @@
 [x] 23. Fixed Google OAuth 403 error - auto-verify email for Google users
 [x] 24. All authentication flows working - phone, email, and Google OAuth
 [x] 25. E-commerce backend COMPLETE and PRODUCTION READY
+[x] 26. Created netlify.toml configuration for full-stack deployment
+[x] 27. Updated package.json build scripts for separate client/server builds
+[x] 28. Updated vite.config.ts to support API_BASE environment variable
+[x] 29. Updated API request functions to use dynamic API base URL
+[x] 30. Created .env.example and NETLIFY_DEPLOYMENT.md documentation
+[x] 31. Ready for Netlify deployment - all code changes complete
