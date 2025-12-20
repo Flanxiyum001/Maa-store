@@ -18,3 +18,5 @@
 [x] 18. Added email OTP verification endpoints (/api/email/send-otp, /api/email/verify-otp)
 [x] 19. Updated database schema for email verification (emailVerified)
 [x] 20. Made both phone AND email verification mandatory for orders
+[x] 21. Fixed database migration - added email_verified column and unique constraint
+[x] 22. Backend running successfully with all endpoints functional
