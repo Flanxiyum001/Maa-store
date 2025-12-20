@@ -15,3 +15,6 @@
 [x] 15. Created phone verification endpoints (/api/phone/send-otp, /api/phone/verify-otp)
 [x] 16. Enforced phone verification requirement for placing orders
 [x] 17. Integrated Firebase Admin SDK for phone auth
+[x] 18. Added email OTP verification endpoints (/api/email/send-otp, /api/email/verify-otp)
+[x] 19. Updated database schema for email verification (emailVerified)
+[x] 20. Made both phone AND email verification mandatory for orders

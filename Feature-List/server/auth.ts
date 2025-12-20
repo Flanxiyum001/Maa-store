@@ -8,6 +8,7 @@ import { promisify } from "util";
 import { storage } from "./storage";
 import { User as SelectUser } from "@shared/schema";
 import { initializeFirebase, sendOTP, verifyOTP } from "./phone-auth";
+import { sendEmailOTP, verifyEmailOTP } from "./email-otp";
 
 declare global {
   namespace Express {
@@ -296,6 +297,76 @@ export function setupAuth(app: Express) {
   app.get("/api/phone/verification-status", requireAuth, (req, res) => {
     const user = req.user as SelectUser;
     res.json({ phoneVerified: user.phoneVerified, phone: user.phone });
+  });
+
+  // ===== EMAIL AUTHENTICATION ENDPOINTS =====
+
+  // Send OTP to email
+  app.post("/api/email/send-otp", async (req, res) => {
+    try {
+      const { email } = req.body;
+      if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+      }
+
+      const sessionId = await sendEmailOTP(email);
+      res.json({ sessionId, message: "OTP sent to email successfully" });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message || "Failed to send OTP" });
+    }
+  });
+
+  // Verify email OTP
+  app.post("/api/email/verify-otp", async (req, res) => {
+    try {
+      const { sessionId, otp, password } = req.body;
+      if (!sessionId || !otp) {
+        return res.status(400).json({ message: "Session ID and OTP are required" });
+      }
+
+      const { email, valid } = await verifyEmailOTP(sessionId, otp);
+      if (!valid) {
+        return res.status(401).json({ message: "Invalid or expired OTP" });
+      }
+
+      // Find user by email
+      let user = await storage.getUserByEmail(email);
+      if (!user) {
+        // Create new user if doesn't exist
+        if (!password) {
+          return res.status(400).json({ message: "Password required for new registration" });
+        }
+        user = await storage.createUser({
+          username: `email_${email.split("@")[0]}`,
+          password: await hashPassword(password),
+          email,
+          emailVerified: true,
+          isAdmin: false,
+        });
+      } else {
+        // Mark email as verified
+        user = await storage.updateUser(user.id, { emailVerified: true });
+      }
+
+      if (!user) {
+        return res.status(500).json({ message: "Failed to verify email" });
+      }
+
+      // Auto-login after verification
+      req.login(user, (err) => {
+        if (err) return res.status(500).json({ message: "Login failed after verification" });
+        const { password: _, ...safeUser } = user;
+        res.json({ message: "Email verified successfully", user: safeUser });
+      });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message || "Failed to verify OTP" });
+    }
+  });
+
+  // Check email verification status
+  app.get("/api/email/verification-status", requireAuth, (req, res) => {
+    const user = req.user as SelectUser;
+    res.json({ emailVerified: user.emailVerified, email: user.email });
   });
 }
 
