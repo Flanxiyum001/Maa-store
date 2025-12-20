@@ -7,6 +7,7 @@ import { scrypt, randomBytes, timingSafeEqual } from "crypto";
 import { promisify } from "util";
 import { storage } from "./storage";
 import { User as SelectUser } from "@shared/schema";
+import { initializeFirebase, sendOTP, verifyOTP } from "./phone-auth";
 
 declare global {
   namespace Express {
@@ -49,6 +50,9 @@ export async function comparePasswords(supplied: string, stored: string) {
 }
 
 export function setupAuth(app: Express) {
+  // Initialize Firebase for phone auth
+  initializeFirebase();
+
   const sessionSettings: session.SessionOptions = {
     secret: process.env.SESSION_SECRET || "maa-store-admin-secret-key-2024",
     resave: false,
@@ -193,6 +197,105 @@ export function setupAuth(app: Express) {
       requiresWhitelist: allowedEmails.length > 0,
       allowedEmails: allowedEmails
     });
+  });
+
+  // ===== PHONE AUTHENTICATION ENDPOINTS =====
+
+  // Register with phone number
+  app.post("/api/phone-register", async (req, res, next) => {
+    try {
+      const { phone, password } = req.body;
+      if (!phone || !password) {
+        return res.status(400).json({ message: "Phone and password are required" });
+      }
+
+      const existingUser = await storage.getUserByPhone(phone);
+      if (existingUser) {
+        return res.status(400).json({ message: "Phone number already registered" });
+      }
+
+      // Create user with phone
+      const user = await storage.createUser({
+        username: `phone_${phone}`,
+        password: await hashPassword(password),
+        phone,
+        phoneVerified: false,
+        isAdmin: false,
+      });
+
+      const { password: _, ...safeUser } = user;
+      res.status(201).json(safeUser);
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  // Send OTP to phone
+  app.post("/api/phone/send-otp", async (req, res) => {
+    try {
+      const { phone } = req.body;
+      if (!phone) {
+        return res.status(400).json({ message: "Phone number is required" });
+      }
+
+      const sessionId = await sendOTP(phone);
+      res.json({ sessionId, message: "OTP sent successfully" });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message || "Failed to send OTP" });
+    }
+  });
+
+  // Verify OTP
+  app.post("/api/phone/verify-otp", async (req, res) => {
+    try {
+      const { sessionId, otp, password } = req.body;
+      if (!sessionId || !otp) {
+        return res.status(400).json({ message: "Session ID and OTP are required" });
+      }
+
+      const { phone, valid } = await verifyOTP(sessionId, otp);
+      if (!valid) {
+        return res.status(401).json({ message: "Invalid or expired OTP" });
+      }
+
+      // Find user by phone
+      let user = await storage.getUserByPhone(phone);
+      if (!user) {
+        // Create new user if doesn't exist
+        if (!password) {
+          return res.status(400).json({ message: "Password required for new registration" });
+        }
+        user = await storage.createUser({
+          username: `phone_${phone}`,
+          password: await hashPassword(password),
+          phone,
+          phoneVerified: true,
+          isAdmin: false,
+        });
+      } else {
+        // Mark phone as verified
+        user = await storage.updateUser(user.id, { phoneVerified: true });
+      }
+
+      if (!user) {
+        return res.status(500).json({ message: "Failed to verify phone" });
+      }
+
+      // Auto-login after verification
+      req.login(user, (err) => {
+        if (err) return res.status(500).json({ message: "Login failed after verification" });
+        const { password: _, ...safeUser } = user;
+        res.json({ message: "Phone verified successfully", user: safeUser });
+      });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message || "Failed to verify OTP" });
+    }
+  });
+
+  // Check phone verification status
+  app.get("/api/phone/verification-status", requireAuth, (req, res) => {
+    const user = req.user as SelectUser;
+    res.json({ phoneVerified: user.phoneVerified, phone: user.phone });
   });
 }
 

@@ -94,10 +94,19 @@ export async function registerRoutes(
     }
   });
 
-  // Create order (public - customers can place orders)
+  // Create order - requires phone verification if customer is logged in
   app.post("/api/orders", async (req, res) => {
     try {
       const orderData = insertOrderSchema.parse(req.body);
+      
+      // If user is logged in, verify phone is verified for registered customers
+      if (req.isAuthenticated()) {
+        const user = req.user as SelectUser;
+        if (!user.phoneVerified) {
+          return res.status(403).json({ message: "Phone verification is required to place orders. Please verify your phone number." });
+        }
+      }
+      
       const order = await storage.createOrder(orderData);
       res.status(201).json(order);
     } catch (error: any) {

@@ -10,3 +10,8 @@
 [x] 10. Updated storage layer to support getUserByEmail for OAuth users
 [x] 11. Integrated Google login button on frontend with OAuth callback
 [x] 12. Added Google OAuth routes (/api/auth/google and callback)
+[x] 13. Added phone number authentication with OTP verification
+[x] 14. Updated database schema for phone fields (phone, phoneVerified)
+[x] 15. Created phone verification endpoints (/api/phone/send-otp, /api/phone/verify-otp)
+[x] 16. Enforced phone verification requirement for placing orders
+[x] 17. Integrated Firebase Admin SDK for phone auth
